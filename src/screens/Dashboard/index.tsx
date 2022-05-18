@@ -1,5 +1,7 @@
 import React from "react";
 import { HighligthCard } from "../../components/HighligthCard";
+import { TransactionCard } from "../../components/TransactionCard";
+
 import * as S from "./styles";
 
 export function Dashboard() {
@@ -41,6 +43,11 @@ export function Dashboard() {
           lastTrasaciton="01 à 16 de abril"
         />
       </S.HighligthCards>
+
+      <S.Transactions>
+        <S.Title>Listagem</S.Title>
+        <TransactionCard />
+      </S.Transactions>
     </S.Container>
   );
 }
