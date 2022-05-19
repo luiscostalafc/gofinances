@@ -11,19 +11,43 @@ import {
   Date,
 } from "./styles";
 
-export const TransactionCard = () => {
+type Category = {
+  name: string;
+  icon: string;
+};
+
+export interface TransactionCardProps {
+  type: "positive" | "negative";
+  title: string;
+  amount: string;
+  category: Category;
+  date: string;
+}
+
+export const TransactionCard = ({
+  title,
+  type,
+  amount,
+  category,
+  date,
+}: TransactionCardProps) => {
+  const isNegativeValue = type === "negative";
+
   return (
     <Container>
-      <Title>Desenvolvimento de site</Title>
+      <Title>{title}</Title>
 
-      <Amount>R$ 12.000,00</Amount>
+      <Amount type={type}>
+        {isNegativeValue && "- "}
+        {amount}
+      </Amount>
 
       <Footer>
         <Category>
-          <Icon name="dollar-sign" />
-          <CategoryName>Vendas</CategoryName>
+          <Icon name={category.icon} />
+          <CategoryName>{category.name}</CategoryName>
         </Category>
-        <Date>13/04/2020</Date>
+        <Date>{date}</Date>
       </Footer>
     </Container>
   );
