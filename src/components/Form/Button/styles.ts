@@ -1,7 +1,12 @@
 import styled from "styled-components/native";
+import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 import { RFValue } from "react-native-responsive-fontsize";
 
-export const Container = styled.TouchableOpacity`
+interface ContainerPros extends RectButtonProps {
+  children: React.ReactNode;
+}
+
+export const Container = styled(RectButton)<ContainerPros>`
   width: 100%;
   padding: 18px;
   align-items: center;
