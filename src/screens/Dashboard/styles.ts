@@ -1,7 +1,10 @@
 import { FlatList, FlatListProps } from "react-native";
 import styled from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
-import { BorderlessButton } from "react-native-gesture-handler";
+import {
+  BorderlessButton,
+  BorderlessButtonProps,
+} from "react-native-gesture-handler";
 import {
   getStatusBarHeight,
   getBottomSpace,
@@ -67,7 +70,7 @@ export const UserName = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
 `;
 
-export const LogoutButton = styled(BorderlessButton)``;
+export const LogoutButton = styled(BorderlessButton)<BorderlessButtonProps>``;
 
 export const Icon = styled(Feather as any)`
   color: ${({ theme }) => theme.colors.secondary};

@@ -55,8 +55,6 @@ export const Register = () => {
     resolver: yupResolver(schema),
   });
 
-  const datakey = "@gofinances:transactions";
-
   function handleTransactionTypeSelect(type: "up" | "down") {
     setTransactionType(type);
   }
@@ -69,7 +67,7 @@ export const Register = () => {
     setCategoryModalOpen(true);
   }
 
-  async function handleRegister(form: FormDataProps): Promise<void> {
+  async function handleRegister(form: FormDataProps | any): Promise<void> {
     if (!transactionType) return Alert.alert("Selecione o tipo da transição");
 
     if (category.key === "category")
@@ -86,6 +84,7 @@ export const Register = () => {
     };
 
     try {
+      const datakey = "@gofinances:transactions";
       const data = await AsyncStorage.getItem(datakey);
       const currentData = data ? JSON.parse(data) : [];
 
@@ -100,7 +99,7 @@ export const Register = () => {
         name: "Categoria",
       });
 
-      navigation.navigate("Listagem");
+      navigation.navigate("Listagem" as any);
     } catch (error) {
       console.log(error);
       Alert.alert("Não foi possível salvar");
